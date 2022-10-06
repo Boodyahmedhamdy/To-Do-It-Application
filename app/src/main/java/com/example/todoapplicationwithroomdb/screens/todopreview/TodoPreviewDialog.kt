@@ -59,7 +59,12 @@ class TodoPreviewDialog: BottomSheetDialogFragment() {
     }
 
     private fun updateTodoValues() {
-        todoPreviewDialogViewModel.todo.title = binding.etTodoTitle.text.toString()
+        if(binding.etTodoTitle.text.toString().isEmpty()) {
+            todoPreviewDialogViewModel.todo.title = "title"
+        } else {
+            todoPreviewDialogViewModel.todo.title = binding.etTodoTitle.text.toString()
+        }
+
         todoPreviewDialogViewModel.todo.isFavorite = binding.cbIsFavorate.isChecked
         todoPreviewDialogViewModel.todo.isFinished = binding.cbMarkAsFinished.isChecked
     }
